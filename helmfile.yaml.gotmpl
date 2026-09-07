@@ -1,0 +1,20 @@
+environments:
+  {{ .Environment.Name }}:
+    values: []
+
+---
+repositories:
+- name: itsm-ng
+  url: https://chart.itsm-ng.org
+
+releases:
+  - name: its-ppr
+    namespace: its-ppr
+    chart: itsmng/itsm-ng
+    version: 2.1.5
+    installed: true
+    createNamespace: false
+    values:
+      - environments/{{ .Environment.Name }}/values.yaml
+    secrets:
+      - environments/{{ .Environment.Name }}/secrets.enc.yaml
