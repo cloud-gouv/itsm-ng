@@ -3,18 +3,14 @@ environments:
     values: []
 
 ---
-repositories:
-- name: itsm-ng
-  url: https://chart.itsm-ng.org
-
 releases:
   - name: its-ppr
     namespace: its-ppr
-    chart: itsmng/itsm-ng
-    version: 2.1.5
+    chart: oci://ghcr.io/cloud-gouv/common-helm-charts/itsm-ng
+    version: 0.0.0-feat-add-itsm-ng.gc30d648
     installed: true
     createNamespace: false
     values:
-      - environments/{{ .Environment.Name }}/values.yaml
+      - environments/{{ .Environment.Name }}/values.yaml.gotmpl
     secrets:
       - environments/{{ .Environment.Name }}/secrets.enc.yaml
